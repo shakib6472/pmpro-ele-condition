@@ -1,8 +1,8 @@
 <?php
 /*
- * Plugin Name:       PMPro ELE Condition
- * Plugin URI:        https://wordpress.org/plugins/pmpro-ele-condition/
- * Description:       A plugin to add PMPro membership level for Elementor conditions. Hide or show Elementor widgets based on PMPro membership levels.
+ * Plugin Name:       PMPro Elementor Visibility (Unofficial)
+ * Plugin URI:        https://github.com/shakib6472/pmpro-ele-condition
+ * Description:       Unofficial plugin to add conditional Elementor visibility based on Paid Memberships Pro membership levels. Hide or show Elementor widgets using server-side logic.
  * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
@@ -13,6 +13,7 @@
  * Text Domain:       pmpro-ele-condition
  * Domain Path:       /languages 
  */
+
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
