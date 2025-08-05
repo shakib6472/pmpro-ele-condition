@@ -23,7 +23,7 @@ function pmpro_ele_condition_activation()
 }
 function pmpro_ele_condition_deactivation()
 {
-    delete_option('pmpro_ele_condition_activated');
+    delete_option('pmpro_ele_condition_activated'); 
 }
 
 add_action('elementor/frontend/after_enqueue_scripts', function () {
