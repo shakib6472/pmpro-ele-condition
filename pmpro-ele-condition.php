@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 function pmpro_ele_condition_activation()
 {
     add_option('pmpro_ele_condition_activated', true);
-}
+} 
 function pmpro_ele_condition_deactivation()
 {
     delete_option('pmpro_ele_condition_activated'); 
