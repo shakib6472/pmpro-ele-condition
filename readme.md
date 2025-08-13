@@ -1,4 +1,4 @@
-# PMPro Elementor Visibility (Unofficial)
+# Membership Visibility Control for Elementor (PMPro) – by Shakib
 
 **Contributors:** shakib6472  
 **Tags:** pmpro, paid membership pro, elementor, conditional visibility, membership levels  
@@ -9,7 +9,7 @@
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html
 
-Unofficial plugin that adds conditional visibility to Elementor widgets based on Paid Memberships Pro membership levels. Created and maintained by Shakib Shown.
+Adds PMPro-based conditional visibility to Elementor widgets. Unofficial plugin by Shakib Shown.
 
 ## Description
 
@@ -46,4 +46,3 @@ For support or feature requests, visit: https://github.com/shakib6472/
 ## Disclaimer
 
 This plugin is not developed, maintained, or endorsed by the creators of Paid Memberships Pro or Elementor. All trademarks and copyrights belong to their respective owners.
-

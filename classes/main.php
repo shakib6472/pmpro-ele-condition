@@ -1,26 +1,26 @@
 <?php
 
-namespace PMProELECondition;
+namespace MEMBVICO;
 include_once __DIR__ . '/helpers.php';
 
 class Main
 {
     public function __construct()
     {
-        add_filter('body_class', [$this, 'shakib_add_pmpro_level_to_body_class']);
+        add_filter('body_class', [$this, 'membvico_add_pmpro_level_to_body_class']);
         //Widgets
-        add_action('elementor/element/common/_section_style/after_section_end', [$this, 'pmpro_visibility_control'], 10, 3);
+        add_action('elementor/element/common/_section_style/after_section_end', [$this, 'membvico_pmpro_visibility_control'], 10, 3);
         //Container and Column
-        add_action('elementor/element/column/section_advanced/after_section_end', [$this, 'pmpro_visibility_control'], 10, 3);
-        add_action('elementor/element/container/section_layout/after_section_end', [$this, 'pmpro_visibility_control'], 10, 3);
+        add_action('elementor/element/column/section_advanced/after_section_end', [$this, 'membvico_pmpro_visibility_control'], 10, 3);
+        add_action('elementor/element/container/section_layout/after_section_end', [$this, 'membvico_pmpro_visibility_control'], 10, 3);
         // Add Elementor hooks for applying conditional visibility
-        add_action('elementor/frontend/the_content', [$this, 'pmpro_apply_visibility_control']);
+        add_action('elementor/frontend/the_content', [$this, 'membvico_pmpro_apply_visibility_control']);
     }
 
     /**
      * Add PMPro membership level to <body> classes.
      */
-    function shakib_add_pmpro_level_to_body_class($classes)
+    function membvico_add_pmpro_level_to_body_class($classes)
     {
         if (is_user_logged_in()) {
             $level = pmpro_getMembershipLevelForUser(get_current_user_id());
@@ -40,27 +40,27 @@ class Main
     }
 
 
-    public function pmpro_visibility_control($element, $args)
+    public function membvico_pmpro_visibility_control($element, $args)
     {
 
         $element->start_controls_section(
             'ecv_conditional_visibility_section',
             [
                 'tab' => \Elementor\Controls_Manager::TAB_ADVANCED,
-                'label' => __('PMPRO  Ele Condition', 'pmpro-ele-condition'),
+                'label' => __('PMPRO  Ele Condition', 'membership-visibility-for-elementor-pmpro-shakib'),
             ]
         );
 
-        $options = (new Helpers())->pmpro_ele_condition_init();
+        $options = (new Helpers())->membvico__condition_init();
 
 
         $element->add_control(
-            'pmpro_ele_condition',
+            'membvico',
             [
-                'label' => esc_html__('Enable PMPRO Conditional Visibility', 'pmpro-ele-condition'),
+                'label' => esc_html__('Enable PMPRO Conditional Visibility', 'membership-visibility-for-elementor-pmpro-shakib'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('On', 'pmpro-ele-condition'),
-                'label_off' => esc_html__('Off', 'pmpro-ele-condition'),
+                'label_on' => esc_html__('On', 'membership-visibility-for-elementor-pmpro-shakib'),
+                'label_off' => esc_html__('Off', 'membership-visibility-for-elementor-pmpro-shakib'),
                 'return_value' => 'yes',   // ON = "yes", OFF = ''
                 'default' => '',
                 'frontend_available' => true,
@@ -69,14 +69,14 @@ class Main
 
         // Notice shown when ON
         $element->add_control(
-            'pmpro_ele_condition_notice_show',
+            'membvico_notice_show',
             [
                 'type' => \Elementor\Controls_Manager::NOTICE,
                 'notice_type' => 'info',
                 'dismissible' => true,
-                'heading' => esc_html__('The element will be SHOWN for selected members.', 'pmpro-ele-condition'),
+                'heading' => esc_html__('The element will be SHOWN for selected members.', 'membership-visibility-for-elementor-pmpro-shakib'),
                 'condition' => [
-                    'pmpro_ele_condition' => 'yes',
+                    'membvico' => 'yes',
                 ],
                 'frontend_available' => true,
             ]
@@ -84,31 +84,31 @@ class Main
 
         // Notice shown when OFF
         $element->add_control(
-            'pmpro_ele_condition_notice_hide',
+            'membvico_notice_hide',
             [
                 'type' => \Elementor\Controls_Manager::NOTICE,
                 'notice_type' => 'info',
                 'dismissible' => true,
-                'heading' => esc_html__('The element will be HIDDEN for selected members.', 'pmpro-ele-condition'),
+                'heading' => esc_html__('The element will be HIDDEN for selected members.', 'membership-visibility-for-elementor-pmpro-shakib'),
                 'condition' => [
 
-                    'pmpro_ele_condition!' => 'yes',
+                    'membvico!' => 'yes',
                 ],
                 'frontend_available' => true,
             ]
         );
 
         $element->add_control(
-            'pmpro_ele_condition_show_or_hide',
+            'membvico_show_or_hide',
             [
-                'label' => esc_html__('Element will be', 'pmpro-ele-condition'),
+                'label' => esc_html__('Element will be', 'membership-visibility-for-elementor-pmpro-shakib'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Hide', 'pmpro-ele-condition'),
-                'label_off' => esc_html__('Show', 'pmpro-ele-condition'),
+                'label_on' => esc_html__('Hide', 'membership-visibility-for-elementor-pmpro-shakib'),
+                'label_off' => esc_html__('Show', 'membership-visibility-for-elementor-pmpro-shakib'),
                 'return_value' => 'yes',   // ON = "yes", OFF = ''
                 'default' => 'yes',
                 'condition' => [
-                    'pmpro_ele_condition' => 'yes',
+                    'membvico' => 'yes',
                 ],
                 'frontend_available' => true,
             ]
@@ -117,15 +117,15 @@ class Main
         $element->add_control(
             'pmpro_member_levels',
             [
-                'label' => esc_html__('Select Membership Levels', 'pmpro-ele-condition'),
+                'label' => esc_html__('Select Membership Levels', 'membership-visibility-for-elementor-pmpro-shakib'),
                 'type' => \Elementor\Controls_Manager::SELECT2,
                 'label_block' => true,
                 'multiple' => true,
                 'options' => $options,
                 'default' => ['pmpro-level-none'], // Default to an empty array
-                'description' => esc_html__('Select the membership levels for which this element should be visible. If no levels are selected, the element will be visible to all users.', 'pmpro-ele-condition'),
+                'description' => esc_html__('Select the membership levels for which this element should be visible. If no levels are selected, the element will be visible to all users.', 'membership-visibility-for-elementor-pmpro-shakib'),
                 'condition' => [
-                    'pmpro_ele_condition' => 'yes',
+                    'membvico' => 'yes',
                 ],
                 'frontend_available' => true,
 
@@ -133,7 +133,7 @@ class Main
         );
         $element->end_controls_section();
     }
-    public function pmpro_apply_visibility_control($content)
+    public function membvico_pmpro_apply_visibility_control($content)
     {
         // Load HTML into DOMDocument
         libxml_use_internal_errors(true);
@@ -150,8 +150,8 @@ class Main
 
             if (json_last_error() === JSON_ERROR_NONE) {
                 // Example: Check your PMPro condition
-                if (!empty($settings['pmpro_ele_condition']) && $settings['pmpro_ele_condition'] === 'yes') {
-                    $hide = !empty($settings['pmpro_ele_condition_show_or_hide']) && $settings['pmpro_ele_condition_show_or_hide'] === 'yes';
+                if (!empty($settings['membvico']) && $settings['membvico'] === 'yes') {
+                    $hide = !empty($settings['membvico_show_or_hide']) && $settings['membvico_show_or_hide'] === 'yes';
                     $levels = !empty($settings['pmpro_member_levels']) ? $settings['pmpro_member_levels'] : [];
                     if (is_user_logged_in()) {
                         $user_level_class = pmpro_getMembershipLevelForUser(get_current_user_id());

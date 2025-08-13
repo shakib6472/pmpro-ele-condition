@@ -1,9 +1,9 @@
 <?php
-namespace PMProEleCondition;
+namespace MEMBVICO;
 
 class Helpers
 {
-    public function pmpro_ele_condition_init()
+    public function membvico__condition_init()
     {
         // Get all PMPro membership levels
         $levels = pmpro_getAllLevels(true, true);
