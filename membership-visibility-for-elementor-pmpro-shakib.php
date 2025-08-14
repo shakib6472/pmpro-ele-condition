@@ -6,7 +6,7 @@
  * Version:           1.0.0
  * Requires at least: 5.2
  * Requires PHP:      7.2
- * Requires Plugins:  elementor, paid-memberships-pro
+ * Requires Plugins:  elementor
  * Author:            Shakib Shown
  * Author URI:        https://github.com/shakib6472/
  * License:           GPL v2 or later
